@@ -10,7 +10,6 @@ chardet==4.0.0
 click==8.0.1
 cloudpickle==1.6.0
 dask==2021.7.1
-ddtrace==0.44.0
 debugpy==1.4.1
 decorator==5.0.9
 defusedxml==0.7.1
@@ -64,7 +63,6 @@ partd==1.2.0
 pexpect==4.8.0
 pickleshare==0.7.5
 Pillow==8.2.0
-pinecone-client==0.8.59
 prometheus-client==0.11.0
 prompt-toolkit==3.0.19
 protobuf==3.13.0
@@ -112,3 +110,5 @@ webencodings==0.5.1
 websocket-client==1.1.0
 Werkzeug==2.0.1
 widgetsnbextension==3.5.1
+googlesearch-python
+bs4

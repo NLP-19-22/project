@@ -25,7 +25,7 @@
 
   const generateResultsTable = data => {
     const tableBodyContent = data.reduce((output, item) => {
-      output += `<tr><td class="titleColumn">${item.title}</td><td class="publicationColumn">${item.publication}</td><td class="scoreColumn">${(item.score * 100).toFixed(2)}%</td></tr>`
+      output += `<tr><td class="titleColumn"><a href=${item.link}><p>${item.title}</p></a></td><td class="scoreColumn">${(item.score * 100).toFixed(2)}%</td></tr>`
       return output
     }, '')
 
