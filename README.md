@@ -14,7 +14,7 @@ Next, create a virtual environment and activate it:
 
 ```
 python -m venv venv
-. venv/bin/activate
+venv/bin/activate //hoặc venv/Script/activate tùy phiên bản. nên tìm folder chứa file activate rồi gõ cho đúng dòng này
 ```
 
 Install dependencies by running:
@@ -22,18 +22,16 @@ Install dependencies by running:
 ```
 python -m pip install -r requirements.txt
 ```
+Có thể gặp một số lỗi lúc install. Tra google hoặc hỏi t (có thể lỗi t đã gặp)
 
-Create an `.env` file and add your Pinecone API key:
-
-```
-PINECONE_API_KEY=your-key-here
-```
 
 Finally, to run the app on your machine, simply run this command from the terminal:
 
 ```
-flask run
+//flask run
+venv/Scripts/python app.py
 ```
+
 
 Or, to run the app in debug mode, add the `FLASK_ENV=development` environment variable before the command:
 
