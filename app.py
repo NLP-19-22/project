@@ -6,7 +6,7 @@ from flask import url_for
 import json
 
 import module.GoogleService as gs
-from module.extractWord.keyword_extraction import extract, extract1
+from module.extractWord.keyword_extraction import extract
 
 app = Flask(__name__)
 
