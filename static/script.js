@@ -5,6 +5,7 @@
   const resultsContainer = document.querySelector('#resultsContainer')
   const resultsTableBody = document.querySelector('#resultsTableBody')
   const noResultsContainer = document.querySelector('#noResults')
+  const detailModal = document.querySelector('#detailModal')
 
   const handleFormSubmission = event => {
     event.preventDefault()
@@ -25,7 +26,11 @@
 
   const generateResultsTable = data => {
     const tableBodyContent = data.reduce((output, item) => {
-      output += `<tr><td class="titleColumn"><a href=${item.link}><p>${item.title}</p></a></td><td class="scoreColumn">${(item.score * 100).toFixed(2)}%</td></tr>`
+      output += `<tr><td class="titleColumn"><a href=${item.link} target="_blank"><p>${item.title}</p></a></td>
+                  <td class="scoreColumn">${(item.score * 100).toFixed(2)}%</td>
+                  <td class="detailColumn"><a href="#detailModal" class="btn btn-primary" data-toggle="modal" data-result=${item.link}>
+                                            View
+                                          </a></td></tr>`
       return output
     }, '')
 
@@ -36,7 +41,12 @@
 
     resultsContainer.style.display = 'block'
   }
-
+  detailModal.addEventListener('show.bs.modal', function (e) {
+    var button = e.relatedTarget;
+    var text = button.getAttribute('data-result')
+    var modalBodyInput = detailModal.querySelector('.modal-body input')
+    modalBodyInput.value = text
+  });
   const handleSliderChange = event => {
     const sliderValue = event.target.value
 

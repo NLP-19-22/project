@@ -4,7 +4,7 @@ from googlesearch import search
 def getLinks(query):
   links = []
   print(query)
-  for j in search(query, num_results=10, lang="vi"): 
+  for j in search(query, num_results=5, lang="vi"): 
       links.append(j) 
   return links
 
