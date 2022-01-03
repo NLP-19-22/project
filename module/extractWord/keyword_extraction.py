@@ -11,8 +11,8 @@ def load_stop_words(stop_word_file):
     @param stop_word_file Path and file name of a file containing stop words.
     @return list A list of stop words.
     """
-    stop_words = ['á','à','là','cho','thì']
-
+    with open('module/extractWord/stopwords.txt', 'r', encoding='utf-8') as f:
+      stop_words = f.read().splitlines()
     return stop_words
 
 
@@ -52,7 +52,6 @@ def extract(text):
     matrix = vectorizer.fit_transform(text_list)
 
     vocab = vectorizer.get_feature_names_out()
-
     # SVD represent documents and terms in vectors
     svd_model = TruncatedSVD(n_components=1, algorithm='randomized', n_iter=100, random_state=122)
     svd_model.fit(matrix)
@@ -65,4 +64,26 @@ def extract(text):
             result += vocab[i] + ' '
     return result
 
+
+
+from rake_nltk import Rake
+
+with open('module/extractWord/stopwords.txt', 'r', encoding='utf-8') as f:
+    stop_word = f.read().splitlines()
+
+def normalize_text(line):
+    line = line.lower()
+    line = word_tokenize(line, format='text')
+    line = re.sub(r'[Wd]+', ' ', line).strip()
+    return line
+
+
+def extract1(suspicious_data):
+    suspicious_data = normalize_text(suspicious_data)
+
+    r = Rake(stopwords=stop_word)
+    r.extract_keywords_from_text(suspicious_data)
+
+    keywords_collection = ' '.join([value[1] for value in r.get_ranked_phrases_with_scores()[2]])
+    return keywords_collection
 
