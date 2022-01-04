@@ -6,7 +6,7 @@
   const resultsTableBody = document.querySelector('#resultsTableBody')
   const noResultsContainer = document.querySelector('#noResults')
   const loader = document.querySelector('#loader')
-
+  
   const handleFormSubmission = event => {
     event.preventDefault()
 
@@ -29,7 +29,7 @@
     const tableBodyContent = data.reduce((output, item) => {
       output += `<tr><td class="titleColumn"><a href=${item.link} target="_blank"><p>${item.title}</p></a></td>
                   <td class="scoreColumn">${(item.score * 10).toFixed(2)}%</td>
-                  <td class="detailColumn"><a href="#detailModal" class="btn btn-primary" data-toggle="modal" data-result="${item.text}">
+                  <td class="detailColumn"><a href="#detailModal" class="btn btn-primary" data-toggle="modal" data-url="${item.link}" data-result="${item.text}">
                                             View
                                           </a></td></tr>`
       return output
@@ -80,12 +80,7 @@
       tableRow.classList.add('hidden')
     }
   }
-  const showLoader = () => {
-    $(".spinner-border").show();
-  }
-  const hideLoader = () => {
-    $(".spinner-border").hide();
-  }
+
   plagiarismCheckerForm.addEventListener('submit', handleFormSubmission)
   sensitivitySlider.addEventListener('input', handleSliderChange)
 })()
