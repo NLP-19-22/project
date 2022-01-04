@@ -3,7 +3,6 @@ import requests
 # to search 
 def getLinks(query):
   links = []
-  print(query)
   for link in search(query, tld='com', num=5, stop=5, pause=2):
       links.append(link) 
   return links

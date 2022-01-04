@@ -13,12 +13,12 @@ app = Flask(__name__)
 def query_getLinks(originalContent):
     query = extract(str(originalContent))
     links = gs.getLinks(query)
-    print(links)
     results_list = []
     i = 0
     for link in links:
         title = gs.getTitle(link)
         text = gs.extract_text(link)
+        
         results_list.append({
             "id": i,
             "link": link,

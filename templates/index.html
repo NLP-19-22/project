@@ -77,9 +77,9 @@
       var text = button.data('result')
       var url = button.data('url')
       var modalBody = $(this).find('.modal-body')
-      modalBody.append("<p>"+url+'</p>')
-      modalBody.append("<p>"+text+"</p>")
-      $('.modal-body').mark(url)
+      modalBody.append("<a href="+url+" target=_blank>"+url+'</p>')
+      modalBody.append("<b>Page content: </b><p>"+text+"</p>")
+      $('.modal-body p').mark(text, {separateWordSearch: false})
     });
     $('#detailModal').on('hidden.bs.modal', function (e) {
       $(this).find('.modal-body').html("")
